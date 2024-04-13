@@ -11,10 +11,11 @@ using Unity.VisualScripting;
 public class CardController : MonoBehaviour, IEndDragHandler
 {
     
-    [SerializeField] int CardCost = 2;
+    [SerializeField] int CardCost = 2;  
     [SerializeField] string CardName = "Card name";
     [SerializeField] TextMeshProUGUI CardNameField;
     [SerializeField] TextMeshProUGUI CardCostField;
+    [SerializeField] GameObject CanBeDroppedEffect;
     Collider2D myCollider;
     GameObject enemyTarget;
     string PowerWord; 
@@ -25,6 +26,7 @@ public class CardController : MonoBehaviour, IEndDragHandler
         CardCostField.text = CardCost.ToString();
         myCollider = GetComponent<Collider2D>();
         PowerWord = CardName;
+        UpdateCanBeDropped(false);
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -37,15 +39,22 @@ public class CardController : MonoBehaviour, IEndDragHandler
     {
         // Debug.Log("Triggered");
         if (other.tag == "Enemy") enemyTarget = other.gameObject;
+        UpdateCanBeDropped(true);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if(other.tag == "Enemy") enemyTarget = null; 
+        UpdateCanBeDropped(false);
     }
 
     public string GetPowerWord(int index)
     {
         return PowerWord;
+    }
+
+    void UpdateCanBeDropped(bool canBeDropped)
+    {
+        CanBeDroppedEffect.SetActiveRecursively(canBeDropped);
     }
 }
