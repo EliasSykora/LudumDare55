@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfdc2f22f4f70f4db7afdcd21ec0da3, type: 3}
   m_Name: Wish_lvl1_1
   m_EditorClassIdentifier: 
-  wish: Kill my neighbor
+  wish: Kill my neighbour
   powerWords:
   - Destroy
   - Man
