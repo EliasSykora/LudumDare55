@@ -1,24 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using System;
-using Unity.VisualScripting;
 
 
 public class CardController : MonoBehaviour, IEndDragHandler
 {
-    
-    [SerializeField] int CardCost = 2;  
+
+    [SerializeField] int CardCost = 2;
     [SerializeField] string CardName = "Card name";
     [SerializeField] TextMeshProUGUI CardNameField;
     [SerializeField] TextMeshProUGUI CardCostField;
     [SerializeField] GameObject CanBeDroppedEffect;
+
+    [SerializeField] float requiredReputation;
+
+    [SerializeField] string[] requiredVariables;
+
     Collider2D myCollider;
     GameObject enemyTarget;
-    string PowerWord; 
+    string PowerWord;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class CardController : MonoBehaviour, IEndDragHandler
     {
         // Debug.Log("Dropped");
         if (enemyTarget != null) enemyTarget.GetComponent<EnemyController>().WordCheck(CardName);
-       // enemyTarget.SetActive(false);
+        // enemyTarget.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -44,7 +44,7 @@ public class CardController : MonoBehaviour, IEndDragHandler
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.tag == "Enemy") enemyTarget = null; 
+        if (other.tag == "Enemy") enemyTarget = null;
         UpdateCanBeDropped(false);
     }
 
@@ -55,6 +55,6 @@ public class CardController : MonoBehaviour, IEndDragHandler
 
     void UpdateCanBeDropped(bool canBeDropped)
     {
-        CanBeDroppedEffect.SetActiveRecursively(canBeDropped);
+        CanBeDroppedEffect.SetActive(canBeDropped);
     }
 }
