@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Card
   - Enemy
+  - Game Controller
+  - Dialogue Controller
   layers:
   - Default
   - TransparentFX
