@@ -7,8 +7,10 @@ using UnityEngine;
 public class EnemyState : ScriptableObject
 {
     public string stateName;
-
+    [TextArea(2, 6)]
     public string wishText;
+
+    [SerializeField] Sprite EnemySprite;
 
     public WeightedText[] thoughtTexts;
 

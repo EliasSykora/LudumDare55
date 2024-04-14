@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,17 +14,22 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Wishes wish;
    [SerializeField] Image EnemyImage;
    [SerializeField] Sprite startingEnemyImage;
+   [SerializeField] GameObject SuccessDialogue;
+    [SerializeField] GameObject FailDialogue;
 
 
     [SerializeField] EnemyState[] states;
     int maxWishes;
     int currentWish = 0;
+    int startingSoul;
+    bool wishEnded = false;
 
     void Start()
     {
         WishField.text = wish.GetWish();
         maxWishes = wish.powerWords.Length;
        ChangeEnemyImage(startingEnemyImage);
+        startingSoul = Soul;
     }
 
     // Update is called once per frame
@@ -40,6 +46,13 @@ public class EnemyController : MonoBehaviour
 
     public void WordCheck(string CardName)
     {
+        if (wishEnded) return;
+        
+        if(CardName=="Exit")
+        {
+            autoFail();
+            return;
+        }
        
        if (wish.GetPowerWords(currentWish).Contains(CardName))
         {
@@ -50,11 +63,26 @@ public class EnemyController : MonoBehaviour
             Debug.Log("Ne");
             Soul -= 5;
         }
+
+        if (Soul < 0) Soul = 0;
         currentWish++;
 
         if (currentWish >= maxWishes)
         {
-            gameObject.SetActive(false);
+             if (Soul >= (startingSoul+(maxWishes*5))) {WishField.text = wish.GetSuccessResponse();} 
+             else {WishField.text = wish.GetFailResponse(); }
+             Invoke("wishEnd", 2.0f);
+            
         }
+    }
+
+    public void autoFail()
+    {
+        WishField.text = wish.GetFailResponse();
+        Invoke("wishEnd", 2.0f);
+    }
+    private void wishEnd() {
+        gameObject.SetActive(false);
+        SuccessDialogue.SetActive(true);
     }
 }

@@ -12,6 +12,7 @@ public class TutorialController : MonoBehaviour
     GameObject hand;
     GameObject soulCounter;
     GameObject cardHolder;
+  
 
     public void RunTutorialSequence()
     {

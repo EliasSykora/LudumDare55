@@ -10,6 +10,12 @@ public class Wishes : ScriptableObject
     [SerializeField] private string wish = "Enter enemy wish";
     [SerializeField] public string[] powerWords;
 
+    [TextArea(2, 6)]
+    [SerializeField] private string successResponse = "Enter enemy success response";
+
+    [TextArea(2, 6)]
+    [SerializeField] private string failResponse = "Enter enemy wish";
+
     public string GetWish()
     {
         return wish;
@@ -17,6 +23,15 @@ public class Wishes : ScriptableObject
     public string GetPowerWords(int index)
     {
         return powerWords[index];
+    }
+   public string GetFailResponse()
+    {
+        return failResponse;
+    }
+
+     public string GetSuccessResponse()
+    {
+        return successResponse;
     }
 }
 
