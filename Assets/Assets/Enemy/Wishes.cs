@@ -8,7 +8,7 @@ public class Wishes : ScriptableObject
 {
     [TextArea(2, 6)]
     [SerializeField] private string wish = "Enter enemy wish";
-    [SerializeField] public string[] powerWords = new string[4];
+    [SerializeField] public string[] powerWords;
 
     public string GetWish()
     {
@@ -18,8 +18,5 @@ public class Wishes : ScriptableObject
     {
         return powerWords[index];
     }
-
-
-
 }
 
