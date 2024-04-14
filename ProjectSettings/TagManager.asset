@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Game Controller
   - Dialogue Controller
+  - Hand
   layers:
   - Default
   - TransparentFX

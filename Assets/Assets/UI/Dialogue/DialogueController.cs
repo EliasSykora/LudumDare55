@@ -1,11 +1,19 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class DialogueController : MonoBehaviour
 {
+    [Serializable]
+    public struct DialogueEntry
+    {
+        [TextArea(2, 6)]
+        public string text;
+        public UnityEvent onOpen;
+        public UnityEvent onClose;
+    }
+
     [SerializeField]
     GameObject dialoguePanel;
     [SerializeField]
@@ -31,13 +39,53 @@ public class DialogueController : MonoBehaviour
         callbackOnClose = onClose;
     }
 
+    public void PlayDialogue(IEnumerable<string> items, Action onLastClosed)
+    {
+        Action showNextItem = null;
+        var enumerator = items.GetEnumerator();
+        showNextItem = () =>
+        {
+            if (!enumerator.MoveNext()) 
+            {
+                onLastClosed?.Invoke();
+                return;
+            }
+            ShowDialogue(enumerator.Current, showNextItem);
+        };
+        showNextItem();
+    }
+
+    public void PlayDialogue(IEnumerable<DialogueEntry> entries, Action onLastClosed)
+    {
+        Action showNextItem = null;
+        var enumerator = entries.GetEnumerator();
+        UnityEvent onClosePrevious = null;
+        showNextItem = () =>
+        {
+            onClosePrevious?.Invoke();
+            if (!enumerator.MoveNext()) 
+            {
+                onLastClosed?.Invoke();
+                return;
+            }
+            onClosePrevious = enumerator.Current.onClose;
+            enumerator.Current.onOpen?.Invoke();
+            ShowDialogue(enumerator.Current.text, showNextItem);
+        };
+        showNextItem();
+    }
+
     void CloseDialogue()
     {
         dialoguePanel.SetActive(false);
         if (callbackOnClose != null)
         {
-            callbackOnClose();
+            var callback = callbackOnClose;
+            // The callback may open a new dialogue window. Any resetting of the
+            // callback must be done before actually calling it, so that we don't
+            // destroy any new parameters set up by the callback.
             callbackOnClose = null;
+            callback();
         }
     }
 
@@ -45,7 +93,7 @@ public class DialogueController : MonoBehaviour
     {
         if (dialoguePanel.activeInHierarchy)
         {
-            if (Input.anyKey)
+            if (Input.anyKeyDown)
             {
                 CloseDialogue();
             }

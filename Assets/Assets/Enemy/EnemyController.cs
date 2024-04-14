@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] TextMeshProUGUI SoulField;
     [SerializeField] TextMeshProUGUI WishField;
     [SerializeField] Wishes wish;
+
+    [SerializeField] EnemyState[] states;
     int maxWishes;
     int currentWish = 0;
 
