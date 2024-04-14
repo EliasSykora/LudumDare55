@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] TextMeshProUGUI SoulField;
     [SerializeField] TextMeshProUGUI WishField;
     [SerializeField] Wishes wish;
+   [SerializeField] Image EnemyImage;
+   [SerializeField] Sprite startingEnemyImage;
+
 
     [SerializeField] EnemyState[] states;
     int maxWishes;
@@ -19,6 +23,7 @@ public class EnemyController : MonoBehaviour
     {
         WishField.text = wish.GetWish();
         maxWishes = wish.powerWords.Length;
+       ChangeEnemyImage(startingEnemyImage);
     }
 
     // Update is called once per frame
@@ -26,6 +31,11 @@ public class EnemyController : MonoBehaviour
     {
         SoulField.text = Soul.ToString();
 
+    }
+
+    public void ChangeEnemyImage(Sprite EnemySprite){
+        EnemyImage.sprite = EnemySprite;
+        EnemyImage.SetNativeSize();
     }
 
     public void WordCheck(string CardName)

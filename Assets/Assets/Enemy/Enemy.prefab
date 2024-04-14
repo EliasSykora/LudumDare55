@@ -503,8 +503,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4976575886967293923}
   - component: {fileID: 7290461921788941668}
-  - component: {fileID: 2252265584114128139}
   - component: {fileID: 8003573011536840150}
+  - component: {fileID: 3994347047797683264}
   m_Layer: 5
   m_Name: Enemy
   m_TagString: Enemy
@@ -562,8 +562,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &2252265584114128139
-PolygonCollider2D:
+--- !u!114 &8003573011536840150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874960512804185742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c8e894e076db946bd343ba9d8cd73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Soul: 0
+  SoulField: {fileID: 6298563099648223527}
+  WishField: {fileID: 2364795990628226748}
+  wish: {fileID: 11400000, guid: c2db3e38f400dc94097fbb04ae91c646, type: 2}
+  EnemyImage: {fileID: 4608470395647942598}
+  startingEnemyImage: {fileID: 21300000, guid: 5e8a86e6c10c23a458ccb950cbb4175e, type: 3}
+  states:
+  - {fileID: 0}
+--- !u!61 &3994347047797683264
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -591,10 +611,10 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -2.1213837, y: 11.110352}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -604,34 +624,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -190.34113, y: 285.42786}
-      - {x: -181.67084, y: 179.48358}
-      - {x: -123.658455, y: 178.79254}
-      - {x: -117.71767, y: -124.31321}
-      - {x: 113.73366, y: -121.92286}
-      - {x: 119.924805, y: 180.81451}
-      - {x: 188.64087, y: 182.28772}
-      - {x: 188.99622, y: 286.36072}
-  m_UseDelaunayMesh: 0
---- !u!114 &8003573011536840150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5874960512804185742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c8e894e076db946bd343ba9d8cd73e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Soul: 0
-  SoulField: {fileID: 6298563099648223527}
-  WishField: {fileID: 2364795990628226748}
-  wish: {fileID: 11400000, guid: c2db3e38f400dc94097fbb04ae91c646, type: 2}
-  states: []
+  serializedVersion: 2
+  m_Size: {x: 286.82065, y: 452.23065}
+  m_EdgeRadius: 0
 --- !u!1 &7315991755280351765
 GameObject:
   m_ObjectHideFlags: 0
