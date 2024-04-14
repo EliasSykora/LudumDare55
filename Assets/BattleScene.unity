@@ -982,25 +982,60 @@ MonoBehaviour:
     onClose:
       m_PersistentCalls:
         m_Calls: []
-  - text: They have their stories if you care. Just keep them satisfied. Give them
-      what they want and they'll grant you their soulpower.
+  - text: See the number on their head? It's the amount of soulpower they are willing
+      to give you.
     onOpen:
       m_PersistentCalls:
         m_Calls: []
     onClose:
       m_PersistentCalls:
         m_Calls: []
-  - text: '"It- it worked! I need help, my dark lord!
+  - text: ' Keep them satisfied to earn more, dissapoint them and lose it.'
+    onOpen:
+      m_PersistentCalls:
+        m_Calls: []
+    onClose:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: 'Each of them has their stories if you care. Read what they need and use
+      the right cards. '
+    onOpen:
+      m_PersistentCalls:
+        m_Calls: []
+    onClose:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: ...
+    onOpen:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1350468849}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    onClose:
+      m_PersistentCalls:
+        m_Calls: []
+  - text: 'This one is easy to solve.
 
-      I need to payback my
-      brother in law-"'
+      Use the power words in the right order:
+      Create. Money. '
     onOpen:
       m_PersistentCalls:
         m_Calls: []
     onClose:
       m_PersistentCalls:
         m_Calls: []
-  - text: 'Read what they need and use the right cards. '
+  - text: If they are satisfied, they give you even more soulpower than originally
+      promised.
     onOpen:
       m_PersistentCalls:
         m_Calls: []
@@ -1331,6 +1366,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
   m_PrefabInstance: {fileID: 2903890014933644028}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1350468849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3515657889828719399, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+  m_PrefabInstance: {fileID: 1541705086}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1362121676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08679241, g: 0.08679241, b: 0.08679241, a: 1}
+  m_Color: {r: 0.10188681, g: 0.10188681, b: 0.10188681, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1791,6 +1831,26 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -37.48
       objectReference: {fileID: 0}
+    - target: {fileID: 2268128881067540530, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364795990628226748, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+      propertyPath: m_margin.w
+      value: -16.14605
+      objectReference: {fileID: 0}
+    - target: {fileID: 2364795990628226748, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+      propertyPath: m_margin.y
+      value: 13.662029
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515657889828719399, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+      propertyPath: m_Name
+      value: Speech
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515657889828719399, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4976575886967293923, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1871,10 +1931,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5317222690757947562, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 18
-      objectReference: {fileID: 0}
     - target: {fileID: 5874960512804185742, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -1884,16 +1940,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8003573011536840150, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
+      propertyPath: Soul
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003573011536840150, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
       propertyPath: states.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9109249202160775209, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
       propertyPath: m_Color.b
-      value: 0.8283019
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109249202160775209, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
       propertyPath: m_Color.g
-      value: 0.8283019
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9109249202160775209, guid: 844d012fb5f633441a091e0b9ea9e244, type: 3}
       propertyPath: m_Color.r
@@ -2178,11 +2238,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 942.2647
+      value: 916.6769
       objectReference: {fileID: 0}
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 419.8029
+      value: 262.26
       objectReference: {fileID: 0}
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2214,11 +2274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 274.70242
+      value: 270.98
       objectReference: {fileID: 0}
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 38.0718
+      value: -338
       objectReference: {fileID: 0}
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2231,6 +2291,10 @@ PrefabInstance:
     - target: {fileID: 5913634777013915731, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8692989403257911525, guid: 9336fd38e7af0482b87768b321f7a537, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 118
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2384,6 +2448,10 @@ PrefabInstance:
     - target: {fileID: 4093578751221871936, guid: 22443f7461eb1ea438ea2b1cfcf98577, type: 3}
       propertyPath: m_Name
       value: SoulCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4093578751221871936, guid: 22443f7461eb1ea438ea2b1cfcf98577, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
