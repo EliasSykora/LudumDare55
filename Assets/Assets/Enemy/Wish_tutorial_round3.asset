@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wish: I'm back my lord, I've lost everything at the casino. But if you grant me
     more money, I'll win it back! I'll be more devoted to you than ever!
-  powerWords: []
-  successResponse: Enter enemy success response
-  failResponse: Enter enemy wish
+  powerWords:
+  - Create
+  - Money
+  successResponse: Thank you, thank you! I'll get it all back!
+  failResponse: I hate you! You are all the same!!!
