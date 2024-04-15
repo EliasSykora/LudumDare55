@@ -11,6 +11,7 @@ public class CardController : MonoBehaviour, IEndDragHandler
     [SerializeField] TextMeshProUGUI CardNameField;
     [SerializeField] TextMeshProUGUI CardCostField;
     [SerializeField] GameObject CanBeDroppedEffect;
+    GameObject _GameController;
 
     [SerializeField] float requiredReputation;
 
@@ -27,11 +28,16 @@ public class CardController : MonoBehaviour, IEndDragHandler
         myCollider = GetComponent<Collider2D>();
         PowerWord = CardName;
         UpdateCanBeDropped(false);
+        _GameController = GameObject.Find("GameController");
     }
     public void OnEndDrag(PointerEventData eventData)
     {
         // Debug.Log("Dropped");
-        if (enemyTarget != null) enemyTarget.GetComponent<EnemyController>().WordCheck(CardName);
+        if (enemyTarget != null)
+        {
+            enemyTarget.GetComponent<EnemyController>().WordCheck(CardName);
+            _GameController.GetComponent<GameController>().soulCount -= CardCost;
+        }
         // enemyTarget.SetActive(false);
     }
 

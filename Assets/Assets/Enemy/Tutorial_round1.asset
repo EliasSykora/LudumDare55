@@ -15,5 +15,8 @@ MonoBehaviour:
   stateName: Tutorial_1
   wishText: "\"I need help, my dark lord! \nI have to payback my brother in law-\""
   EnemySprite: {fileID: 21300000, guid: 5e8a86e6c10c23a458ccb950cbb4175e, type: 3}
-  thoughtTexts: []
-  responses: []
+  thoughtTexts:
+  - {fileID: 11400000, guid: 242a09af04495054caeecc0f7260bcdf, type: 2}
+  responses:
+  - {fileID: 0}
+  - {fileID: 0}

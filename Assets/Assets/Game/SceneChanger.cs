@@ -9,5 +9,15 @@ public class SceneChanger : MonoBehaviour
  public void startGame(){
     SceneManager.LoadScene(1);       
  }
- 
- }
+
+    public void level1()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void menu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+}

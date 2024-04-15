@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "WeightedText", fileName = "New WeightedText")]
+
 public class WeightedText : ScriptableObject
 {
     [TextArea(2, 6)]

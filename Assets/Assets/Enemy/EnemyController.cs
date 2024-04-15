@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] int Soul = 0;
@@ -12,10 +14,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] TextMeshProUGUI SoulField;
     [SerializeField] TextMeshProUGUI WishField;
     [SerializeField] Wishes wish;
-   [SerializeField] Image EnemyImage;
-   [SerializeField] Sprite startingEnemyImage;
-   [SerializeField] GameObject SuccessDialogue;
+    [SerializeField] Image EnemyImage;
+    [SerializeField] Sprite startingEnemyImage;
+    [SerializeField] GameObject SuccessDialogue;
     [SerializeField] GameObject FailDialogue;
+    [SerializeField] string RoundNumber;
+    GameObject _GameController;
+    [SerializeField] GameObject _RoundCounter;
+    [SerializeField] GameObject rivalEnemy;
 
 
     [SerializeField] EnemyState[] states;
@@ -30,13 +36,19 @@ public class EnemyController : MonoBehaviour
         maxWishes = wish.powerWords.Length;
        ChangeEnemyImage(startingEnemyImage);
         startingSoul = Soul;
+        _GameController = GameObject.Find("GameController");
+      
     }
 
     // Update is called once per frame
     void Update()
     {
         SoulField.text = Soul.ToString();
-
+        if (gameObject.activeSelf)
+        {
+            _RoundCounter.SetActive(true);
+            _RoundCounter.GetComponent<TextMeshProUGUI>().text = RoundNumber;
+        }
     }
 
     public void ChangeEnemyImage(Sprite EnemySprite){
@@ -57,7 +69,7 @@ public class EnemyController : MonoBehaviour
        if (wish.GetPowerWords(currentWish).Contains(CardName))
         {
             Debug.Log("Ano");
-            Soul += 5;
+            Soul += 2;
         } else
         {
             Debug.Log("Ne");
@@ -69,7 +81,9 @@ public class EnemyController : MonoBehaviour
 
         if (currentWish >= maxWishes)
         {
-             if (Soul >= (startingSoul+(maxWishes*5))) {WishField.text = wish.GetSuccessResponse();} 
+            if (rivalEnemy != null) rivalEnemy.GetComponent<EnemyController>().autoFail();
+            if (Soul > 0) _GameController.GetComponent<GameController>().soulCount += Soul;
+            if (Soul >= (startingSoul)) {WishField.text = wish.GetSuccessResponse();} 
              else {WishField.text = wish.GetFailResponse(); }
              Invoke("wishEnd", 2.0f);
             
@@ -78,11 +92,16 @@ public class EnemyController : MonoBehaviour
 
     public void autoFail()
     {
+       
+
         WishField.text = wish.GetFailResponse();
         Invoke("wishEnd", 2.0f);
     }
     private void wishEnd() {
+
         gameObject.SetActive(false);
         SuccessDialogue.SetActive(true);
+        _RoundCounter.SetActive(false);
+      //  _GameController.GetComponent<GameController>().SummoningEnds();
     }
 }

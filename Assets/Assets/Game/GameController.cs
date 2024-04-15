@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
+   
     [System.Serializable]
     public class GameState
     {
         public float reputation = 0.0f;
+       
 
         public Dictionary<string, string> variables = new Dictionary<string, string>();
     }
@@ -17,6 +20,13 @@ public class GameController : MonoBehaviour
     private GameObject _soulCounter;
     [SerializeField]
     private GameObject _cardHolder;
+    public int soulCount = 5;
+    [SerializeField]
+    private GameObject _totalCountObject;
+    [SerializeField]
+    public int totalCount = 0;
+    [SerializeField]
+    private TextMeshProUGUI _totalCountText;
 
     public static GameController instance
     {
@@ -50,8 +60,16 @@ public class GameController : MonoBehaviour
         return null;
     }
 
-    void Start()
+    void Update()
+    {if (soulCount < 0) soulCount = 0;
+        _soulCounter.GetComponent<TMP_Text>().text = soulCount.ToString();
+    }
+
+    public void SummoningEnds()
     {
+        totalCount += soulCount;
+        _totalCountText.text = totalCount.ToString();
+        _totalCountObject.SetActive(true);
 
     }
 }

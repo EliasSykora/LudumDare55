@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cfdc2f22f4f70f4db7afdcd21ec0da3, type: 3}
+  m_Name: Wish_tutorial_round3
+  m_EditorClassIdentifier: 
+  wish: I'm back my lord, I've lost everything at the casino. But if you grant me
+    more money, I'll win it back! I'll be more devoted to you than ever!
+  powerWords:
+  - Create
+  - Money
+  successResponse: Thank you, thank you! I'll get it all back!
+  failResponse: I hate you! You are all the same!!!
